@@ -1,5 +1,105 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+body {
+    background-color: rgb(40, 151, 40);
+    color: white;
+    font-weight: bold;
+    font-family: "Work Sans", sans-serif;
+}  
 
-body{
-    background: white;
+input {
+    width: 1.5cm;
 }
+
+.cards-container,
+.change-container {
+    height: fit-content;
+}
+
+.change-container {
+    margin: 20px 10px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60px;
+    height: fit-content;
+    box-shadow: 5px 5px 2px 0 rgba(0, 0, 0, 0.418);
+}
+
+.card > .left-top-corner, 
+.card > .center, 
+.card > .right-bottom-corner {
+    text-align: center;
+}
+
+.left-top-corner {
+    align-self: start;
+    font-size: 0.6em;    
+}
+
+.left-top-corner > * {
+    display: block;
+}
+
+.center {
+    align-self: center;
+    font-size: 2em;
+}
+
+.right-bottom-corner {
+    align-self: end;
+    font-size: 0.6em;
+}
+
+.right-bottom-corner > * {
+    display: block;
+    transform: rotateZ(180deg);
+}
+
+
+.sorted-container {
+    counter-reset: cont-change;
+    height: fit-content;
+}
+
+.change-container {
+    counter-increment: cont-change;
+    height: fit-content;
+    padding: 10px;
+}
+
+.change-container::before {
+    content: counter(cont-change);
+    position: relative;
+    top: 50px;
+    transform: translateY(-25%);
+    padding-right: 10px;
+    font-size: 3em;
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+}
+
+.change-container:hover {
+    background: linear-gradient(to right, rgb(40, 255, 40) 50%, rgb(40, 151, 40));
+    box-shadow: 0px 0 5px 6px rgb(40, 255, 40);
+    border-radius: 10px;
+}
+
+.change-container:hover .card {
+    transform: scale(1.1);
+    transition: transform 0.6s ease;
+}
+
+.change-container:hover .card:nth-child(even) {
+    transform: rotateZ(5deg);
+}
+
+.change-container:hover .card:nth-child(odd) {
+    transform: rotateZ(-5deg);
+}
+
